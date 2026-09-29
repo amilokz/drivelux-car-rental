@@ -25,8 +25,9 @@ export default function BookingModal({ car, onPick, onClose }: Props) {
   const [ret, setRet] = useState("");
   const [driver, setDriver] = useState(false);
 
-  // lock body scroll + close on Escape
+  // lock body scroll + close on Escape (only while the modal is open)
   useEffect(() => {
+    if (!car) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
@@ -37,7 +38,7 @@ export default function BookingModal({ car, onPick, onClose }: Props) {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
     };
-  }, [onClose]);
+  }, [car, onClose]);
 
   const today = useMemo(() => new Date().toISOString().split("T")[0], []);
 

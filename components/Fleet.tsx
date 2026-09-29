@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Users, Cog, Fuel, ArrowUpRight } from "lucide-react";
 import { CARS, formatPKR, type Car } from "@/data/cars";
 
@@ -24,17 +25,18 @@ export default function Fleet({ onBook }: { onBook: (car: Car) => void }) {
           {CARS.map((car) => (
             <article
               key={car.id}
-              className="card-glow flex flex-col overflow-hidden rounded-2xl bg-[#0e0e12]"
+              className="card-glow group flex flex-col overflow-hidden rounded-2xl bg-[#0e0e12]"
             >
               {/* art panel */}
-              <div
-                className={`relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br ${car.art}`}
-              >
-                <span
-                  className={`font-display text-7xl font-bold tracking-tighter opacity-90 ${car.accent} drop-shadow-[0_0_24px_rgba(255,255,255,0.15)]`}
-                >
-                  {car.monogram}
-                </span>
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src={car.image}
+                  alt={`${car.name} — DriveLux rental car`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e12] via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
                 {car.tag && (
                   <span className="absolute left-3 top-3 rounded-full bg-amber-400 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-black">
