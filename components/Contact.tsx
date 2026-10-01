@@ -120,7 +120,10 @@ export default function Contact() {
             </a>
           </div>
           <p className="text-xs text-zinc-600">
-            © 2026 DriveLux Car Rental · Demo website — fictional business
+            © 2026 DriveLux Car Rental · Demo website — fictional business · Designed &amp; built by{" "}
+            <a href="https://akclnt.com" target="_blank" rel="noreferrer" className="transition-colors hover:text-amber-300">
+              AKCLNT
+            </a>
           </p>
         </div>
       </footer>
